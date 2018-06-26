@@ -33,6 +33,27 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+    },
+    postcss: {
+      plugins: {
+        'postcss-custom-properties': {
+          warnings: false
+        }
+      }
+    }
+  },
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/bulma',
+    '@nuxtjs/pwa',
+  ],
+  manifest: {
+      name: 'PWA',
+      lang: 'ja'
+  },
+  watchers: {
+    webpack: {
+      poll: true
     }
   }
 }
