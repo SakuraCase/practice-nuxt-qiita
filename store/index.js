@@ -4,15 +4,15 @@ const store = () => new Vuex.Store({
     state: {
       items: null,
       page: 1,
-      per_page: 2
+      per_page: 3
     },
     getters: {
-      items: (state) => state.items
+      items: (state) => state.items,
+      page: (state) => state.page
     },
     mutations: {
-      setItems (state, items) {
-        state.items = items
-      }
+      setItems (state, items) { state.items = items },
+      setPage (state, page) { state.page = page }
     },
     actions: {
       async getItems ({ state, commit }) {
@@ -26,7 +26,7 @@ const store = () => new Vuex.Store({
           }
         )
         commit('setItems', response)
-      }
+      },
     }
 })
 export default store
