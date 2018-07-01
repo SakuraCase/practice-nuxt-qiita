@@ -20,7 +20,7 @@
   },
   "babel": {
     "presets": [
-      "evn"
+      "env"
     ]
   },
   "dependencies": {
