@@ -1,15 +1,18 @@
 <template>
   <div>
-    <input v-model='currentPage'/>
-    <button @click='pagination()'>SEARCH</button>
+    <pagination/>
     {{ items }}
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions, mapMutations } from 'vuex'
+import Pagination from '~/components/Pagination.vue'
 
 export default {
+  components: {
+    Pagination
+  },
   async asyncData({ param, store }) {
     await store.dispatch('getItems')
     return {
@@ -17,21 +20,9 @@ export default {
   },
   methods: {
     ...mapActions(['getItems']),
-    ...mapMutations(['setPage']),
-    pagination () {
-      this.getItems()
-    }
   },
   computed: {
-    ...mapGetters(['items', 'page']),
-    currentPage: {
-      get () {
-        return this.page
-      },
-      set (page) {
-        this.setPage(page)
-      }
-    }
+    ...mapGetters(['items']),
   }
 }
 </script>
