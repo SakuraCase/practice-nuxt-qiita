@@ -1,17 +1,17 @@
 <template>
-  <nav class="pagination is-centered container" role="navigation">
-    <a @click="pagination(-1)" v-bind:disabled="isDisabled(-1)" class="pagination-previous">Previous</a>
-    <a @click="pagination(1)" v-bind:disabled="isDisabled(1)" class="pagination-next">Next</a>
+  <nav class="pagination is-centered" role="navigation">
+    <a class="pagination-previous" @click="pagination(-1)" v-bind:disabled="isDisabled(-1)">Previous</a>
+    <a class="pagination-next" @click="pagination(1)" v-bind:disabled="isDisabled(1)">Next</a>
     <ul class="pagination-list">
-      <li><a @click="pagination(first-page)" v-bind:disabled="page < first" class="pagination-link">{{ first }}</a></li>
+      <li><a class="pagination-link" @click="pagination(first-page)" v-bind:disabled="page <= first">{{ first }}</a></li>
       <li><span class="pagination-ellipsis">&hellip;</span></li>
-      <li><a @click="pagination(-2)" v-bind:disabled="isDisabled(-2)" class="pagination-link">{{ pageNum(-2) }}</a></li>
-      <li><a @click="pagination(-1)" v-bind:disabled="isDisabled(-1)" class="pagination-link">{{ pageNum(-1) }}</a></li>
-      <li><a @click="pagination(0)" v-bind:disabled="isDisabled(0)" class="pagination-link is-current">{{ pageNum(0) }} </a></li>
-      <li><a @click="pagination(1)" v-bind:disabled="isDisabled(1)" class="pagination-link">{{ pageNum(1) }}</a></li>
-      <li><a @click="pagination(2)" v-bind:disabled="isDisabled(2)" class="pagination-link">{{ pageNum(2) }}</a></li>
+      <li><a class="pagination-link" @click="pagination(-2)" v-bind:disabled="isDisabled(-2)">{{ pageNum(-2) }}</a></li>
+      <li><a class="pagination-link" @click="pagination(-1)" v-bind:disabled="isDisabled(-1)">{{ pageNum(-1) }}</a></li>
+      <li><a class="pagination-link is-current" @click="pagination(0)" v-bind:disabled="isDisabled(0)">{{ pageNum(0) }} </a></li>
+      <li><a class="pagination-link" @click="pagination(1)" v-bind:disabled="isDisabled(1)">{{ pageNum(1) }}</a></li>
+      <li><a class="pagination-link" @click="pagination(2)" v-bind:disabled="isDisabled(2)">{{ pageNum(2) }}</a></li>
       <li><span class="pagination-ellipsis">&hellip;</span></li>
-      <li><a @click="pagination(last-page)" v-bind:disabled="page > last" class="pagination-link">{{ last }}</a></li>
+      <li><a class="pagination-link" @click="pagination(last-page)" v-bind:disabled="page >= last">{{ last }}</a></li>
     </ul>
   </nav>
 </template>
@@ -33,7 +33,6 @@ export default {
       this.setPage(this.page + diff)
       this.getItems()
     },
-    /** paginationsのボタン数値を返す。範囲外なら空文字を返す */
     pageNum(diff) {
       return this.isDisabled(diff)? "": this.page + diff
     },
