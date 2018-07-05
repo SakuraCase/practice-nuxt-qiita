@@ -27,11 +27,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['getItems']),
+    ...mapActions(['getArticles']),
     ...mapMutations(['setPage']),
     pagination (diff) {
       this.setPage(this.page + diff)
-      this.getItems()
+      this.getArticles()
     },
     pageNum(diff) {
       return this.isDisabled(diff)? "": this.page + diff

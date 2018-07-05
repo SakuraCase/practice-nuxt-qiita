@@ -1,28 +1,25 @@
 <template>
   <div>
     <pagination/>
-    {{ items }}
+    <articles/>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions, mapMutations } from 'vuex'
 import Pagination from '~/components/Pagination.vue'
+import Articles from '~/components/Articles.vue'
 
 export default {
   components: {
-    Pagination
+    Pagination,
+    Articles
   },
-  async asyncData({ param, store }) {
-    await store.dispatch('getItems')
-    return {
-    }
+  async fetch ({ store }) {
+    await store.dispatch('getArticles')
   },
   methods: {
-    ...mapActions(['getItems']),
-  },
-  computed: {
-    ...mapGetters(['items']),
+    ...mapActions(['getArticles']),
   }
 }
 </script>

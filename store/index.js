@@ -2,20 +2,20 @@ import Vuex from 'vuex'
 
 const store = () => new Vuex.Store({
     state: {
-      items: null,
+      articles: null,
       page: 1,
       per_page: 3
     },
     getters: {
-      items: (state) => state.items,
+      articles: (state) => state.articles,
       page: (state) => state.page
     },
     mutations: {
-      setItems (state, items) { state.items = items },
+      setArticles (state, articles) { state.articles = articles },
       setPage (state, page) { state.page = page }
     },
     actions: {
-      async getItems ({ state, commit }) {
+      async getArticles ({ state, commit }) {
         const response = await this.$axios.$get(
           'https://qiita.com/api/v2/tags/nuxt.js/items', {
             headers: {'Content-Type': 'application/json'},
@@ -25,7 +25,7 @@ const store = () => new Vuex.Store({
             }
           }
         )
-        commit('setItems', response)
+        commit('setArticles', response)
       },
     }
 })
