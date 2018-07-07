@@ -4,7 +4,7 @@ const store = () => new Vuex.Store({
     state: {
       articles: null,
       page: 1,
-      per_page: 3
+      per_page: 5
     },
     getters: {
       articles: (state) => state.articles,
